@@ -45,7 +45,7 @@ export default function Tracker() {
         packageId && setDeliveryDetails(delivery);
       });
     })();
-  }, [packageDetails]);
+  }, [packageDetails, packageId]);
 
   return (
     <MainContainer bg="#D9E8D3">
