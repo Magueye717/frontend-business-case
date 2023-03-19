@@ -28,8 +28,14 @@ export default function Driver() {
       .get(`http://localhost:8000/api/delivery/${deliveryId}`)
       .then(({ data }) => {
         setDeliveryDetails(data.data);
-        sePackageDetails(data.data.package_id);
-        setDeliveryStatus({ current: data.data.status });
+
+        if (data.data) {
+          axios
+            .get(`http://localhost:8000/api/package/${data.data.package_id}`)
+            .then(({ data }) => {
+              sePackageDetails(data.data);
+            });
+        }
       });
   };
 
